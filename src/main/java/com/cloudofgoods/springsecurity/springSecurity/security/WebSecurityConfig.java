@@ -11,7 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 @Configuration
- /* The WebSecurityConfig class is annotated with @EnableWebSecurity
+ /* The WebSecurityConfig class is annotated with "@EnableWebSecurity"
     to enable Spring Security's web security support and provide the
     Spring MVC integration.*/
 @EnableWebSecurity
@@ -19,11 +19,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {/* WebSecurityConfigurerAdapter, Tell to the spring How we want
                                                                         to manage application to the users and the security in application
                                                                         (Allows customization to both WebSecurity and HttpSecurity) */
-    private final UserDetailsService userDetailsService;  // Provided By Spring Security
+    private final UserDetailsService userDetailsService;   /*Provided By Spring Security used to retrieve the user's
+                                                           authentication and authorization information. (feed the user information to the Spring security API.)*/
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {  /*AuthenticationManagerBuilder Allows for easily
+                                                                                 building in memory authentication,
+                                                                                 LDAP authentication, JDBC based authentication etc...*/
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
     }
 
