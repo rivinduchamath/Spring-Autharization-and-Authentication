@@ -47,7 +47,7 @@ public class SpringSecurityApplication {
 
             service.addRoleToUser("John","ROLE_USER");
             service.addRoleToUser("Kamal","ROLE_ADMIN");
-            service.addRoleToUser("AMri","ROLE_SUPER_ADMIN");
+            service.addRoleToUser("AMri","ROLE_ADMIN");
         };
     }
 }
