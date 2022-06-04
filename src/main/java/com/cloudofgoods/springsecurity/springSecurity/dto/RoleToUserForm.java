@@ -3,7 +3,6 @@
  * Date :6/4/2022
  */
 
-
 package com.cloudofgoods.springsecurity.springSecurity.dto;
 
 import lombok.Data;
