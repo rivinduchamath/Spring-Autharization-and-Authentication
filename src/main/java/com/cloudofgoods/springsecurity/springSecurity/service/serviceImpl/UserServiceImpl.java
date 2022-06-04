@@ -1,3 +1,8 @@
+/**
+ * @author - Chamath_Wijayarathna
+ * Date :6/4/2022
+ */
+
 package com.cloudofgoods.springsecurity.springSecurity.service.serviceImpl;
 
 import com.cloudofgoods.springsecurity.springSecurity.model.Role;
@@ -7,7 +12,7 @@ import com.cloudofgoods.springsecurity.springSecurity.reppository.UserRepository
 import com.cloudofgoods.springsecurity.springSecurity.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,9 +29,30 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService, UserDetailsService {
 
+    // UserService to Implement Crud to Loosely Coupling
+    // Implement UserDetailsService interface to Load Users From Database
     private final UserRepository repository;
     private final RoleRepository roleRepository;
 
+    @Override
+    // Load Users from database by Using Unique userName attribute
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+
+        User user = repository.findUserByUserName(userName);
+        if (user == null) {
+            log.info("User Name " + userName + " Not Found in the database");
+            throw new UsernameNotFoundException("User Not Found on database");
+        } else {
+            log.info("User Name " + userName + " Found in the database");
+        }
+        // Create Collection to add Authorities of User
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        user.getRoles().forEach(role -> {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        });
+        // Return Username, Password List of authorities
+        return new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), authorities);
+    }
 
     @Override
     public User saveUser(User user) {
@@ -47,7 +73,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public void addRoleToUser(String userName, String roleName) {
         User user = repository.findUserByUserName(userName);
         Role role = roleRepository.findRoleByName(roleName);
-        log.info("Add Role " +roleName +" to the User " + userName);
+        log.info("Add Role " + roleName + " to the User " + userName);
         user.getRoles().add(role);
     }
 
@@ -65,16 +91,4 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return repository.findAll();
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-        User user = repository.findUserByUserName(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("User Not Found on database");
-        } else {
-
-        }
-        Collection authorities = new ArrayList<>();
-        return new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), authorities);
-    }
 }

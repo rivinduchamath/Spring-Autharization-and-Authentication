@@ -1,3 +1,8 @@
+/**
+ * @author - Chamath_Wijayarathna
+ * Date :6/4/2022
+ */
+
 package com.cloudofgoods.springsecurity.springSecurity;
 
 import com.cloudofgoods.springsecurity.springSecurity.model.Role;
@@ -7,6 +12,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 
@@ -17,7 +24,14 @@ public class SpringSecurityApplication {
         SpringApplication.run(SpringSecurityApplication.class, args);
     }
 
-
+    @Bean
+    /* Defined in the Spring Security configuration to encode the password.
+       Here create a Spring bean and drop bean to spring context.
+       Then WebSecurityConfig Class passwordEncoder get this bean object from
+       Spring IOC and access*/
+    PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
     @Bean
     CommandLineRunner runner(UserService service ){
         return args -> {
