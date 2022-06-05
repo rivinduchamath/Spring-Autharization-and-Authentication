@@ -31,8 +31,8 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Slf4j
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-
-    private final AuthenticationManager authenticationManager;
+// If we want to add unsuccessfulAuthentication() to set time after unsuccessful login
+    private final AuthenticationManager authenticationManager;// want to Call Authentication manager
 
     public CustomAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
@@ -45,21 +45,27 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         log.info("UserName is: {}", userName);
         log.info("Password is: {}", password);
 
+        // Create Object UsernamePasswordAuthenticationToken
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userName, password);
+
+        // Return Role(Authorities), Username and Credentials as Protected.
         return authenticationManager.authenticate(authenticationToken);
     }
 
     @Override
+    //Call this method once Login Successful to create Token
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        User user = (User) authResult.getPrincipal();
-        Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());
+        User user = (User) authResult.getPrincipal(); // User object From Spring Security. The identity of the principal being authenticated
+        Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());// From JWT Dependency. HMACSHA256 is a type of keyed hash algorithm that is constructed from the SHA-256 hash function and used as a Hash-based Message Authentication Code (HMAC).
 
-        String access_token = JWT.create().withSubject(user.getUsername()).withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 1000)).withIssuer(request.getRequestURL().toString()).withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList())).sign(algorithm);
+        String access_token = JWT.create()
+                .withSubject(user.getUsername()) // All UserNames are Unique
+                .withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 1000)).withIssuer(request.getRequestURL().toString()).withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList())).sign(algorithm);
         String refresh_token = JWT.create().withSubject(user.getUsername()).withExpiresAt(new Date(System.currentTimeMillis() + 30 * 60 * 1000)).withIssuer(request.getRequestURL().toString()).sign(algorithm);
 
         // Print Tokens in Header
-        /* response.setHeader("access_token", access_token);
-         response.setHeader("refresh_token", refresh_token);*/
+        /*  response.setHeader("access_token", access_token);
+            response.setHeader("refresh_token", refresh_token);*/
 
         Map<String,String> token = new HashMap<>();
         token.put("access_token", access_token);

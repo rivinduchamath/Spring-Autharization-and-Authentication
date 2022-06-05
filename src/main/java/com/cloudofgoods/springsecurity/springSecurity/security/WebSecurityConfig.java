@@ -48,11 +48,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {/* WebSecur
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean());
+        CustomAuthenticationFilter customAuthenticationFilter =
+                new CustomAuthenticationFilter(authenticationManagerBean());// calling authenticationManagerBean() bean
         customAuthenticationFilter.setFilterProcessesUrl("/api/login");
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(STATELESS);
+        // Allow to access Request from Below any URLs
         http.authorizeRequests().antMatchers("/api/login/**","/api/token/refresh/**").permitAll();
+        // Allow to access Request from Below URLs with having authorized Roles
         http.authorizeRequests().antMatchers(GET, "/api/user/**").hasAnyAuthority("ROLE_USER");
         http.authorizeRequests().antMatchers(POST, "/api/user/save/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
@@ -64,6 +67,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {/* WebSecur
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
-    return super.authenticationManagerBean();
+    return super.authenticationManagerBean(); // Calling webSecurityConfigureAdapter Class to return AuthenticationManagerDelegator which return authenticationBuilder and context
     }
 }
