@@ -57,7 +57,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[product-screenshot]
+ <img src="images/q.png" alt="Logo" width="1080" height="880">
+ <img src="images/qq.png" alt="Logo" width="1080" height="880">
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
@@ -66,10 +68,7 @@ Here's a blank template to get started:
 
 ### Built With
 
-* []()
-* []()
-* []()
-
+* [Maven]()
 
 
 <!-- GETTING STARTED -->
@@ -80,20 +79,20 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
+* SQL
   ```sh
-  npm install npm@latest -g
+  SQL
   ```
 
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/rivinduchamath/Spring-Autharization-and-Authentication.git
    ```
-2. Install NPM packages
+2. Install Java packages
    ```sh
-   npm install
+   Java
    ```
 
 
@@ -139,7 +138,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/rivinduchamath/Spring-Autharization-and-Authentication](https://github.com/github_username/repo_name)
 
 
 
