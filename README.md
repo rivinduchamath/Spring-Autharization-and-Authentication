@@ -57,8 +57,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
- <img src="images/q.PNG" alt="Logo" width="400" height="880">
- <img src="images/qq.PNG" alt="Logo" width="400" height="880">
+ <img src="images/q.PNG" alt="Logo" width="1400" height="880">
+ <img src="images/qq.PNG" alt="Logo" width="1400" height="880">
  
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
