@@ -85,7 +85,7 @@ public class UserResources {
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             try {
                 String refresh_token = authorizationHeader.substring("Bearer ".length());
-                Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());
+                Algorithm algorithm = Algorithm.HMAC256("Cpt.Chamath.jwt-secret@ILABS06-05-2022".getBytes());
                 JWTVerifier verifier = JWT.require(algorithm).build();
                 DecodedJWT decodedJWT = verifier.verify(refresh_token);
                 String userName = decodedJWT.getSubject();
@@ -93,7 +93,7 @@ public class UserResources {
 
                 String access_token = JWT.create()
                         .withSubject(user.getUserName())
-                        .withExpiresAt(new java.sql.Date(System.currentTimeMillis() + 10 * 60 * 1000))
+                        .withExpiresAt(new java.sql.Date(System.currentTimeMillis() + 10 * 60 * 1000)) // Set Time 10 min
                         .withIssuer(request.getRequestURL().toString())
                         .withClaim("roles", user.getRoles().stream().map(Role::getName).collect(Collectors.toList()))
                         .sign(algorithm);

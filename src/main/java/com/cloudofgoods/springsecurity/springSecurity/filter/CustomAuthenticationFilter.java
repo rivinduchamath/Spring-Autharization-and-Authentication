@@ -56,7 +56,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
     //Call this method once Login Successful to create Token
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         User user = (User) authResult.getPrincipal(); // User object From Spring Security. The identity of the principal being authenticated
-        Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());// From JWT Dependency. HMACSHA256 is a type of keyed hash algorithm that is constructed from the SHA-256 hash function and used as a Hash-based Message Authentication Code (HMAC).
+        Algorithm algorithm = Algorithm.HMAC256("Cpt.Chamath.jwt-secret@ILABS06-05-2022".getBytes());// From JWT Dependency. HMACSHA256 is a type of keyed hash algorithm that is constructed from the SHA-256 hash function and used as a Hash-based Message Authentication Code (HMAC).
 
         String access_token = JWT.create()
                 .withSubject(user.getUsername()) // All UserNames are Unique
