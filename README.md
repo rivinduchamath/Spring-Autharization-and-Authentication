@@ -57,11 +57,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
  <a>
- <img src="images/q.PNG" alt="Logo" width="1400" height="600">
+ <img src="images/q.PNG" alt="Logo" width="1400" height="400">
 </a>
   --------------------------------------------------
 <a>
-<img src="images/qq.PNG" alt="Logo" width="1400" height="600">
+<img src="images/qq.PNG" alt="Logo" width="1400" height="400">
 </a> 
 
  
