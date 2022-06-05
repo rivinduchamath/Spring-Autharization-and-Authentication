@@ -58,8 +58,8 @@
 ## About The Project
 
 [product-screenshot]
- <img src="images/q.png" alt="Logo" width="1080" height="880">
- <img src="images/qq.png" alt="Logo" width="1080" height="880">
+ <img src="images/q.png" alt="Logo" width="880" height="880">
+ <img src="images/qq.png" alt="Logo" width="880" height="880">
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
