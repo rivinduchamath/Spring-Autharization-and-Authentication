@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public Role saveRole(Role role) {
-        log.info("Inside the SAve Role " + role.getName());
+        log.info("Inside the Save Role " + role.getName());
         return roleRepository.save(role);
     }
 
@@ -92,6 +92,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public List<User> getUsers() {
         log.info("Get All Users");
         return repository.findAll();
+    }
+
+    @Override
+    public List<Role> getRoles() {
+        log.info("Get All Roles");
+        return roleRepository.findAll();
     }
 
 }

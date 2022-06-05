@@ -3,7 +3,6 @@
  * Date :6/4/2022
  */
 
-
 package com.cloudofgoods.springsecurity.springSecurity.filter;
 
 import com.auth0.jwt.JWT;
@@ -58,7 +57,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
 
                 } catch (Exception e) {
                     log.info("Error Logging In" + e.getMessage());
-                    response.setHeader("error", e.getMessage());
+                    response.setHeader("error ", e.getMessage());
                     response.setStatus(FORBIDDEN.value());
                     // response.sendError(FORBIDDEN.value());
 

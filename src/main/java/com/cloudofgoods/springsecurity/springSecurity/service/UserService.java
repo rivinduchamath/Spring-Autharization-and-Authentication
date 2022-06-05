@@ -22,4 +22,5 @@ public interface UserService {
 
     List<User> getUsers();// Here Implement Limit
 
+    List<Role> getRoles();
 }

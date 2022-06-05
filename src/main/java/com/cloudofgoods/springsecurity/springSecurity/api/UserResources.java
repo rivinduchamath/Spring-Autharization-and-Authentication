@@ -48,6 +48,15 @@ public class UserResources {
         return ResponseEntity.ok().body(userService.getUsers());
     }
 
+    @GetMapping("/roles")
+    // ResponseEntity represents an HTTP response, including headers, body, and status
+    // ResponseEntity from spring-web dependency
+    // Method include Get Role Object
+    public ResponseEntity<List<Role>> getRoles() {
+        return ResponseEntity.ok().body(userService.getRoles());
+    }
+
+
     @PostMapping("/user/save")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
         // uniform resource identifier to address resources. When resources are named well, an API is intuitive and easy to use. c
@@ -57,6 +66,7 @@ public class UserResources {
 
     @PostMapping("/role/save")
     public ResponseEntity<Role> saveRole(@RequestBody Role role) {
+        // uniform resource identifier to address resources. When resources are named well, an API is intuitive and easy to use. c
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/role/save").toUriString());
         return ResponseEntity.created(uri).body(userService.saveRole(role));
     }
