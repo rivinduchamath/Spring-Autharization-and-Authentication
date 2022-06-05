@@ -23,6 +23,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    @Column(name = "user_Name", length = 50, unique = true)
     private String userName; // Email or Unique
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
