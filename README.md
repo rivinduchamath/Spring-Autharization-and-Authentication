@@ -146,7 +146,7 @@ Project Link: [https://github.com/rivinduchamath/Spring-Autharization-and-Authen
 
 
 
-<!-- ACKNOWLEDGEMENTS -->
+<!-- User GUIDE -->
 ## Acknowledgements
 
 <a>
