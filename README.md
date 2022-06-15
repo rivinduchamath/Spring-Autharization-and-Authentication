@@ -147,10 +147,10 @@ Project Link: [https://github.com/rivinduchamath/Spring-Autharization-and-Authen
 
 
 <!-- User GUIDE -->
-## Acknowledgements
+## User GUIDE
 
 <a>
-<img src="images/uuuuuu.PNG" alt="Logo" width="1400" height="2500">
+<img src="images/uuuuuu.PNG" alt="Logo" width="1400" height="2200">
 </a> 
 
 
