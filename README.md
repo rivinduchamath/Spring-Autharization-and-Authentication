@@ -149,9 +149,9 @@ Project Link: [https://github.com/rivinduchamath/Spring-Autharization-and-Authen
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
-* []()
-* []()
+<a>
+<img src="../RIVINDU/src/main/webapp/gentelella-master/production/uuuuuu.PNG" alt="Logo" width="1400" height="2500">
+</a> 
 
 
 
