@@ -122,10 +122,6 @@ See the [open issues](https://github.com/github_username/Spring-Autharization-an
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
-
 Project Link: [https://github.com/rivinduchamath/Spring-Autharization-and-Authentication](https://github.com/github_username/repo_name)
 
 
