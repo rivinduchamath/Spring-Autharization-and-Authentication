@@ -42,7 +42,7 @@ public class SpringSecurityApplication {
             service.saveRole(new Role( null,"ROLE_ADMIN"));
             service.saveRole(new Role( null,"ROLE_SUPER_ADMIN"));
 
-            service.saveUser(new User(null,"John K", "John","123456",new ArrayList<>()));
+            service.saveUser(new User(null,"John K", "john@gmail.com","1234",new ArrayList<>()));
             service.saveUser(new User(null,"Kamal", "Kamal","12345",new ArrayList<>()));
             service.saveUser(new User(null,"Nimal", "Nimal","1234",new ArrayList<>()));
             service.saveUser(new User(null,"AMri", "AMri","123",new ArrayList<>()));
