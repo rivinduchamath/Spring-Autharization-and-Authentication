@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Port Number "2000" - Authentication and Authorization JWT</h1>
+<h3>Initially One user in the system <small> name : Kamal / userName : Kamal / Password : 12345 / Role : ROLE_ADMIN</small></h3>
+<h3>There is another role In System ROLE_USER</h3>
+<hr>
+<h4>ADMIN_USER > Kamal Can add ROLE_USER to the System</h4>
+<h4>
+
+    <ul>
+        <h4> Before adding User Role Kamal Must Log in to the system to get access_token</h4>
+        <li>Kamal Must log in to the system URL : http://localhost:2000/api/login :: Request Type : POST</li>
+        <li>Go to Postman : Body >> x-www-form-urlencoded </li>
+        <li>key :: username : VALUE :: Kamal </li>
+        <li>key :: password : VALUE :: 12345 </li>
+    </ul>
+    <hr>
+    <ul>
+        <h4>Next ADMIN_USER kamal can add User Roles to the system</h4>
+        <li>Kamal Must Pass the access_token in header</li>
+        <li>Go to Postman : Headers </li>
+        <li>key :: Authorization : VALUE :: Bearer space Token (E.g.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9........) </li>
+        <li>Inside the Body He Can Pass User Data as json Object</li>
+        <li>URL : http://localhost:2000/api/user/save Type : Post</li>
+        <li>
+            &nbsp;&nbsp; { <br>
+            &nbsp;&nbsp; "name": "AMri",<br>
+            &nbsp;&nbsp; "userName": "nimal123",<br>
+            &nbsp;&nbsp;"password": "1866",<br>
+            &nbsp;&nbsp; "roles": [<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   "id": 3,<br>
+            &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  "name": "ROLE_ADMIN"<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;   &nbsp;&nbsp;  ]<br>
+            &nbsp;&nbsp;  }</li>
+
+    </ul>
+    <hr>
+    <ul>
+        <h4>ADMIN_USER and ROLE_USER can Get all Users in the System</h4>
+        <li>User Must Pass the access_token in header</li>
+        <li>Go to Postman : Headers </li>
+        <li>key :: Authorization : VALUE :: Bearer space Token (E.g.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9........) </li>
+        <li>URL : http://localhost:2000/api/users Type : GET</li>
+        <li>
+            &nbsp;&nbsp; { <br>
+            &nbsp;&nbsp; "name": "Kamal",<br>
+            &nbsp;&nbsp; "userName": "Kamal",<br>
+            &nbsp;&nbsp;"password": "123456",<br>
+            &nbsp;&nbsp; "roles": [<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   "id": 3,<br>
+            &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  "name": "ROLE_ADMIN"<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;   &nbsp;&nbsp;  ]<br>
+            &nbsp;&nbsp;  },<br>
+
+            &nbsp;&nbsp; { <br>
+            &nbsp;&nbsp; "name": "AMri",<br>
+            &nbsp;&nbsp; "userName": "nimal123",<br>
+            &nbsp;&nbsp;"password": "1866",<br>
+            &nbsp;&nbsp; "roles": [<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+            &nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   "id": 3,<br>
+            &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  "name": "ROLE_ADMIN"<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+            &nbsp;&nbsp;   &nbsp;&nbsp;  ]<br>
+            &nbsp;&nbsp;  }</li>
+    </ul>
+</h4>
+<h6></h6>
+
+</body>
+</html>
