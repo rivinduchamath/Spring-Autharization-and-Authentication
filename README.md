@@ -8,7 +8,7 @@
     
   </a>
 
-<h3 align="center">Cloud of Goods Auth2</h3>
+<h3 align="center"></h3>
 
   <p align="center">
     Authentication and Authorisation
